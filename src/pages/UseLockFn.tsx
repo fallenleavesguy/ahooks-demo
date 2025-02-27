@@ -25,7 +25,7 @@ const UseLockFn: React.FC = () => {
         <button
           onClick={() => submit()}
           disabled={loading}
-          style={{ marginTop: '8px' }}
+          style={{ marginTop: '8px', width: '200px' }}
         >
           {loading ? '执行中...' : '点击执行 (等待2秒)'}
         </button>
