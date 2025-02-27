@@ -5,9 +5,10 @@
 }
 
 .app-header {
-  background-color: #1890ff;
+  background-color: var(--component-bg);
   padding: 1rem;
-  color: white;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .app-header h1 {
@@ -21,8 +22,9 @@
 
 .app-sidebar {
   width: 250px;
-  background-color: #f0f2f5;
+  background-color: var(--component-bg);
   padding: 1rem;
+  border-right: 1px solid var(--border-color);
 }
 
 .app-sidebar ul {
@@ -36,19 +38,41 @@
 }
 
 .app-sidebar a {
-  color: #1890ff;
+  color: var(--text-secondary);
   text-decoration: none;
   display: block;
   padding: 0.5rem;
   border-radius: 4px;
+  transition: all 0.3s;
 }
 
 .app-sidebar a:hover {
-  background-color: #e6f7ff;
+  background-color: rgba(24, 144, 255, 0.1);
+  color: var(--primary-color);
 }
 
 .app-main {
   flex: 1;
   padding: 2rem;
-  background-color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* 添加滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--component-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #434343;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #525252;
 } 
