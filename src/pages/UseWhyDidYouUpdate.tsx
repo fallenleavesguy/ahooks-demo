@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import { useWhyDidYouUpdate } from 'ahooks';
 
 interface ChildProps {
@@ -11,7 +11,7 @@ const Child: React.FC<ChildProps> = memo((props) => {
   useWhyDidYouUpdate('Child', props);
   
   return (
-    <div style={{ padding: '16px', border: '1px solid #e8e8e8', marginTop: '16px' }}>
+    <div style={{ padding: '16px', border: '1px solid var(--border-color)', marginTop: '16px' }}>
       <p>子组件</p>
       <p>Count: {props.count}</p>
       <p>Object value: {props.object.value}</p>
@@ -23,6 +23,11 @@ const Child: React.FC<ChildProps> = memo((props) => {
 const UseWhyDidYouUpdate: React.FC = () => {
   const [count, setCount] = useState(0);
   const [object, setObject] = useState({ value: 'hello' });
+
+  // 使用 useCallback 包裹点击处理函数
+  const handleClick = useCallback(() => {
+    console.log('clicked');
+  }, []); // 空依赖数组，因为函数不依赖任何状态
 
   return (
     <div>
@@ -52,8 +57,18 @@ const UseWhyDidYouUpdate: React.FC = () => {
       <Child
         count={count}
         object={object}
-        onClick={() => console.log('clicked')}
+        onClick={handleClick}
       />
+
+      <div style={{ marginTop: '16px', padding: '16px', border: '1px solid var(--border-color)', borderRadius: '4px' }}>
+        <h3>说明：</h3>
+        <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
+          <li>点击"更新数字"按钮：count 属性会改变，导致重渲染</li>
+          <li>点击"更新对象 (相同值)"：虽然值相同，但是对象引用改变，导致重渲染</li>
+          <li>点击"更新对象 (新值)"：值和引用都改变，导致重渲染</li>
+          <li>onClick 函数使用 useCallback 包裹，不会在重渲染时改变引用</li>
+        </ul>
+      </div>
     </div>
   );
 };
