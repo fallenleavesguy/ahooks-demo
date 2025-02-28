@@ -1,50 +1,113 @@
-# React + TypeScript + Vite
+# ahooks Demo 演示项目
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个使用 React + TypeScript + Vite 构建的 ahooks 演示项目，展示了 ahooks 常用 hooks 的使用方法和最佳实践。
 
-Currently, two official plugins are available:
+## 🚀 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+项目包含以下 ahooks API 的演示：
 
-## Expanding the ESLint configuration
+1. **useSize**
+   - 监听 DOM 元素尺寸变化
+   - 实时获取元素的宽高信息
+   - 支持响应式调整
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **useInViewport**
+   - 检测元素是否在视口中
+   - 支持滚动检测
+   - 实时反馈可见性状态
 
-- Configure the top-level `parserOptions` property like this:
+3. **useClickAway**
+   - 监听目标元素外的点击事件
+   - 常用于模态框、下拉菜单等场景
+   - 支持自定义 DOM 事件
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+4. **useScroll**
+   - 监听元素的滚动位置
+   - 支持水平和垂直滚动
+   - 实时获取滚动坐标
+
+5. **useReactive**
+   - 提供响应式数据管理方案
+   - 支持深层对象更新
+   - 自动触发组件重渲染
+
+6. **useWhyDidYouUpdate**
+   - 帮助开发者理解组件重渲染原因
+   - 支持属性变化追踪
+   - 优化性能的得力助手
+
+7. **useDebounce**
+   - 处理防抖值
+   - 支持自定义等待时间
+   - 提供 leading 选项
+   - 对比展示与 useThrottle 的区别
+
+8. **useLockFn**
+   - 给异步函数加锁
+   - 防止并发执行
+   - 适用于表单提交等场景
+
+## 🛠️ 技术栈
+
+- React 19
+- TypeScript
+- Vite
+- ahooks
+- React Router DOM
+
+## 📦 安装和运行
+
+```bash
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+
+# 构建生产版本
+pnpm build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🎯 项目结构
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+src/
+├── components/     # 公共组件
+├── pages/         # 示例页面
+├── styles/        # 样式文件
+├── App.tsx        # 应用入口
+└── router.tsx     # 路由配置
+```
+
+## 🎨 主题定制
+
+项目使用 CSS 变量实现主题定制，支持深色模式：
+
+```css
+:root {
+  --primary-color: #1890ff;
+  --bg-color: #141414;
+  --text-color: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --border-color: #303030;
+  --component-bg: #1f1f1f;
+}
+```
+
+## 📚 学习资源
+
+- [ahooks 官方文档](https://ahooks.js.org/zh-CN)
+- [React 官方文档](https://react.dev)
+- [TypeScript 官方文档](https://www.typescriptlang.org)
+
+## 🤝 贡献指南
+
+1. Fork 本仓库
+2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交你的改动 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开一个 Pull Request
+
+## 📄 许可证
+
+MIT License - 详见 [LICENSE](LICENSE) 文件
